@@ -10,7 +10,7 @@
     </p>
     <p>
         <!-- Enlace a GitHub: abre en nueva pestaña -->
-        <a href="enlace mi GitHub" target="_blank" class="text-decoration-none">
+        <a href="https://github.com/Ma83rcos/tienda_Miyagi_Do-Php" target="_blank" class="text-decoration-none">
             🌐 Ver proyecto en GitHub
         </a>
     </p>

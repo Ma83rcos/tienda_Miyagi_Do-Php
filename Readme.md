@@ -168,7 +168,7 @@ El script `database/init.sql` crea la estructura completa y datos de ejemplo al 
 
 **Marcos Aaron Moya Maldonado**  
 Estudiante de 2º DAW Semipresencial, IES Juan de Garay  
-GitHub: [@tu-usuario-github](https://github.com/tu-usuario-github)
+GitHub: [@Ma83rcos](https://github.com/Ma83rcos)
 
 ## 📄 Licencia
 
