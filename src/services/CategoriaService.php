@@ -4,7 +4,6 @@ namespace services;
 use config\Config;
 use models\Categoria;
 use PDO;
-
 use PDOException;
 
 class CategoriaService{
@@ -12,12 +11,13 @@ class CategoriaService{
 
     public function __construct(){
         //Obtiene la instancia de Config y usamos su PDO
-        $this->db = Config::getInstance()->db;
+        $this->db = Config::getInstance()->getDb();
     }
-    //Recuperar todas las ctegorias
+    //Recuperar todas las categorias
     public function findAll(){
         $consultaSql = "SELECT * FROM categorias ORDER BY id";
         $stmt = $this->db->prepare($consultaSql);
+        //Captura de errores SQL
         try{
             $stmt->execute();
         }catch(PDOException $e){
@@ -41,6 +41,7 @@ class CategoriaService{
     public function findById(int $id){
     $consultaSql = "SELECT * FROM categorias WHERE id = :id";
     $stmt = $this->db->prepare($consultaSql);
+    //Si falla devuelve false
     try {
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();

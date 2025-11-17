@@ -11,7 +11,7 @@ class Categoria{
     public function __construct($id=null, $nombre=null, $createdAt=null, $updatedAt=null, $isDeleted=false){
         $this->id = $id; // Ahora es un número, no se genera UUID
         $this->nombre = $nombre;
-        $this->createdAt = $createdAt ?? date('Y-m-d H:i:s');
+        $this->createdAt = $createdAt ?? date('Y-m-d H:i:s');//si vien se usa si no se crea automatico
         $this->updatedAt = $updatedAt;
         $this->isDeleted = $isDeleted;
     }

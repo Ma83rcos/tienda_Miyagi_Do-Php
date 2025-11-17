@@ -4,7 +4,7 @@ namespace config;
 
 use Dotenv\Dotenv;  // Para cargar variables de entorno desde archivo .env
 use PDO;            // Para la conexión a la base de datos usando PDO
-use Exception;
+use Exception;      //Para manejar errores
 class Config
 {
  // Instancia estática para el patrón Singleton (una única instancia)
@@ -23,6 +23,8 @@ class Config
    
  // Constructor privado para evitar que se instancie desde fuera (Singleton)
     private function __construct(){
+        //Excepcion por si hay fallo en lectura .env
+        try{
           // Crear una instancia de Dotenv para cargar variables desde el archivo .env ubicado en rootPath
         $dotenv = Dotenv::createImmutable($this->rootPath);
         $dotenv->load();
@@ -39,9 +41,12 @@ class Config
         $this->db = new PDO("pgsql:host={$this->postgresHost};port={$this->postgresPort};dbname={$this->postgresDb}",
                                  $this->postgresUser,
                                  $this->postgresPassword);
-
+        //Permite capturar errores de BD mas clara y controlada
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);                         
+    }catch(Exception $e){
+        throw new Exception("Error al conectar a la base de datos: " . $e->getMessage());
     }
+}
     // Método estático para obtener la instancia única de la clase (Singleton)
     public static function getInstance(): Config
     {

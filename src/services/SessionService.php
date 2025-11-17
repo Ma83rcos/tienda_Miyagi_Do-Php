@@ -36,18 +36,20 @@ class SessionService{
         if(session_status() !== PHP_SESSION_NONE){
             session_destroy();//Termina sesion
         }
-        unset($_SESSION); // ← Limpia completamente la variable
+        unset($_SESSION); //Limpia completamente la variable
     }
     //Verifica si esta Logueado y controla expiracion de sesion
     public function isLoggedIn(): bool{
+        //Si no hay sesion o loggedIn es falso retorna falso
         if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true){
             return false;
         }
-        //Comprobar si a pasdo el timpo permitido 1 hora
-        if(isset($_SESSION['last_activity']) &&  (time() - $_SESSION['last_activity'] > $this->expireAfterSeconds)){
+        //Comprobar si a pasado el timpo permitido 1 hora
+        if(isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $this->expireAfterSeconds)){
         $this->logout();
         return false;
-    }
+    } 
+     //Sigue activo reinicia el reloj de expiracion sesion
      $_SESSION['last_activity'] = time();
      return true;   
     }

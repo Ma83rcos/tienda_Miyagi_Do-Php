@@ -60,15 +60,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     // Manejar imagen subida
 $imagenNombre = 'default.png'; // Imagen por defecto en caso de no subir ninguna
-
+// Verificamos si se ha subido un archivo correctamente
 if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
-    $nombreTmp = $_FILES['imagen']['tmp_name'];
-    $nombreArchivo = basename($_FILES['imagen']['name']);
+    $nombreTmp = $_FILES['imagen']['tmp_name'];// ruta temporal del archivo
+    $nombreArchivo = basename($_FILES['imagen']['name']);// nombre original
     
     // Generar un nombre único para evitar sobrescribir
     $ext = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
-    $imagenNombre = uniqid('prod_') . '.' . $ext;
-    
+    $imagenNombre = uniqid('prod_') . '.' . $ext;// generamos nombre único
+    // **Ruta final donde se guardará el archivo**
     $rutaDestino = __DIR__ . '/uploads/' . $imagenNombre;
 
 

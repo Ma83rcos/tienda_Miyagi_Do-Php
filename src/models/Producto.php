@@ -29,7 +29,7 @@ class Producto{
         $this->color = $color;
         $this->talla = $talla;
         $this->imagen = $imagen;
-        $this->createdAt = $createdAt ?? date('Y-m-d H:i:s');
+        $this->createdAt = $createdAt ?? date('Y-m-d H:i:s');//Si viene valor se sasigan si no asigna fecha actual
         $this->updatedAt = $updatedAt;
         $this->categoriaNombre = $categoriaNombre;
         $this->isDeleted = $isDeleted;

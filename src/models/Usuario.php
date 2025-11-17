@@ -45,6 +45,7 @@ class Usuario{
      public function setApellidos($apellidos){ $this->apellidos = $apellidos; }
      public function setEmail($email){ $this->email = $email; }
      public function setUsername($username){ $this->username = $username; }
+     //asigna una contraseña al usuario, antes comprueba si esa contraseña ya está hasheada o si necesita encriptarse.
      public function setPassword($password, $isHashed = false){  $this->password = $isHashed ? $password : password_hash($password, PASSWORD_BCRYPT); }
      public function setUpdatedAt($updatedAt){ $this->updatedAt = $updatedAt; }
      public function setIsDeleted($isDeleted){ $this->isDeleted = $isDeleted; }
