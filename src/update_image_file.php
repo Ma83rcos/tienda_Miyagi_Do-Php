@@ -41,7 +41,7 @@ if (!isset($_FILES['imagen']) || $_FILES['imagen']['error'] !== UPLOAD_ERR_OK){
 
 $file = $_FILES['imagen'];
 
-//Tipos de extensiones subidas
+//Tipos de extensiones permitidas subidas de imagenes
 $allowedTypes = ['image/jpeg', 'image/png'];
 $allowedExts = ['jpg', 'jpeg', 'png'];
 
@@ -73,7 +73,7 @@ $oldImage = $producto->getImagen();
 if ($oldImage && $oldImage !== 'default.png') {
     $oldPath = $uploadDir . $oldImage;
     if (file_exists($oldPath)) {
-        unlink($oldPath);
+        unlink($oldPath);//Elimina el archivo
     }
 }
 
